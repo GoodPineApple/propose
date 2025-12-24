@@ -265,6 +265,7 @@ section.visible {
         max-width: 90%; /* Center it nicely */
         margin: 0 auto;
         height: auto; /* Let height adapt to image aspect ratio or set a fixed max-height */
+        min-height: 300px; /* Prevent collapse while loading */
         max-height: 70vh;
         box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Lighter shadow for mobile */
     }

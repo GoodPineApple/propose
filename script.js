@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Ensure DOM is fully loaded before running
+function init() {
   // Scroll Animation Observer
   const sections = document.querySelectorAll("section");
   const observerOptions = {
@@ -78,4 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
       colors: ["#eebbcc", "#d4af37", "#ffffff"],
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
