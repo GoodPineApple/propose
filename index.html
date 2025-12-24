@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif+KR:wght@300;600&display=swap" rel="stylesheet">
+    <!-- Confetti JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section id="hero" class="visible">
+        <h1>우리의 이야기는...</h1>
+        <p>천 리 길도 한 걸음부터.<br>그리고 내가 가장 좋아하는 발걸음은 너와 함께한 시간들이었어.</p>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Our Days Section -->
+    <section id="ourdays" class="content-section">
+        <h2>우리의 나날들</h2>
+        <div class="gallery-vertical">
+            <!-- 15 Our Days Images -->
+            <div class="memory-card-vertical"><img src="assets/ourdays_01.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_02.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_03.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_04.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_05.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_06.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_07.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_08.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_09.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_10.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_11.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_12.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_13.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_14.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/ourdays_15.jpeg" class="memory-img" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Sapporo Section -->
+    <section id="sapporo" class="content-section">
+        <h2>이번 여행에도 삿포로와 함께</h2>
+        <div class="gallery-vertical">
+            <!-- 12 Sapporo Images -->
+            <div class="memory-card-vertical"><img src="assets/sapporo_01.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_02.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_03.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_04.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_05.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_06.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_07.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_08.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_09.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_10.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_11.jpeg" class="memory-img" loading="lazy"></div>
+            <div class="memory-card-vertical"><img src="assets/sapporo_12.jpeg" class="memory-img" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Closing Message -->
+    <section id="closing-message">
+        <p class="message-text">10년 뒤에도 삿포로도 같이 오고.<br>앞으로 영원히 함께하자.</p>
+    </section>
+
+    <!-- Proposal Section -->
+    <section id="proposal">
+        <h2>나와 결혼해줄래?</h2>
+        <div class="buttons">
+            <button class="btn btn-yes" id="yesBtn">좋아!</button>
+            <button class="btn btn-no" id="noBtn">아니..</button>
+        </div>
+    </section>
+
+    <!-- Celebration Overlay -->
+    <div id="celebration">
+        <h1>사랑해! ❤️</h1>
+        <p>우리 함께 행복하자.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

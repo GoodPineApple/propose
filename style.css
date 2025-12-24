@@ -1,0 +1,230 @@
+/* Global Styles */
+:root {
+    --primary-color: #eebbcc; /* Soft Pink */
+    --secondary-color: #fff0f5; /* Lavender Blush */
+    --accent-color: #d4af37; /* Gold */
+    --text-color: #5a4a42; /* Warm Dark Grey */
+    --font-heading: 'Noto Serif KR', serif; /* Changed to Korean-friendly font */
+    --font-body: 'Noto Serif KR', serif;
+    --transition-speed: 0.8s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.8;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    word-break: keep-all;
+}
+
+section {
+    min-height: 50vh; /* Reduced min-height to allow smoother scrolling flow */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition-speed) ease-out, transform var(--transition-speed) ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+#hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff0f5 0%, #eebbcc 100%);
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1.5s ease-out;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Vertical Gallery */
+.gallery-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 800px; /* Constrain width for better viewing experience */
+    margin: 0 auto;
+}
+
+.memory-card-vertical {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px; /* Polaroid style border */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.memory-card-vertical:hover {
+    transform: scale(1.02);
+}
+
+.memory-img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    border-radius: 4px;
+}
+
+/* Closing Message */
+#closing-message {
+    text-align: center;
+    padding: 5rem 1rem;
+    background: #fff;
+}
+
+.message-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2;
+    color: var(--text-color);
+}
+
+/* Proposal Section */
+#proposal {
+    min-height: 80vh;
+    background: radial-gradient(circle, #fff0f5 0%, #eebbcc 100%);
+    text-align: center;
+}
+
+#proposal h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100px;
+}
+
+.btn {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    word-break: keep-all;
+}
+
+.btn-yes {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-yes:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-no {
+    background-color: #ddd;
+    color: #666;
+    position: relative;
+    z-index: 10;
+}
+
+/* Celebration Overlay */
+#celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+#celebration.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#celebration h1 {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    80% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #hero h1 { font-size: 2.5rem; }
+    #proposal h2 { font-size: 2.2rem; }
+    .message-text { font-size: 1.4rem; }
+    .buttons { flex-direction: column; height: auto; gap: 1rem; }
+}
