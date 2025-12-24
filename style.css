@@ -44,6 +44,18 @@ section.visible {
     transform: translateY(0);
 }
 
+/* Scroll Animation for Images */
+.memory-card-carousel {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.memory-card-carousel.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Hero Section */
 #hero {
     min-height: 100vh;
@@ -237,4 +249,27 @@ section.visible {
     #proposal h2 { font-size: 2.2rem; }
     .message-text { font-size: 1.4rem; }
     .buttons { flex-direction: column; height: auto; gap: 1rem; }
+
+    /* Vertical Feed for Mobile */
+    .gallery-carousel {
+        flex-direction: column;
+        overflow-x: hidden; /* No horizontal scroll */
+        scroll-snap-type: none;
+        padding: 0;
+        gap: 2rem;
+    }
+
+    .memory-card-carousel {
+        flex: 0 0 auto;
+        width: 100%; /* Use full width minus padding handled by section maybe? Check global padding */
+        max-width: 90%; /* Center it nicely */
+        margin: 0 auto;
+        height: auto; /* Let height adapt to image aspect ratio or set a fixed max-height */
+        max-height: 70vh;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Lighter shadow for mobile */
+    }
+
+    section {
+        padding: 2rem 0.5rem; /* Less padding on sides for mobile to maximize space */
+    }
 }

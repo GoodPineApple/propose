@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
 
+  // Observe Images for Scroll Animation
+  const images = document.querySelectorAll(".memory-card-carousel");
+  images.forEach((img) => {
+    observer.observe(img);
+  });
+
   // "No" Button Interaction
   const noBtn = document.getElementById("noBtn");
   const yesBtn = document.getElementById("yesBtn");
@@ -24,9 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // For Desktop (Mouseover)
   noBtn.addEventListener("mouseover", moveButton);
 
-  // For Mobile (Touchstart - make it jump before click if possible, or just on touch)
+  // For Mobile (Touchstart - make it jump properly)
   noBtn.addEventListener("touchstart", (e) => {
-    e.preventDefault(); // Prevent click
+    // We don't preventDefault immediately if we want to allow some interaction, 
+    // but for the "run away" effect, preventing default is good to stop the click.
+    e.preventDefault(); 
     moveButton();
   });
 
