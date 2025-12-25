@@ -86,35 +86,32 @@ section.visible {
     color: var(--text-color);
 }
 
-/* Horizontal Carousel */
+/* Grid Gallery */
 .gallery-carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
     width: 100%;
-    max-width: 100vw;
-    padding: 2rem 1rem;
+    max-width: 1200px;
+    padding: 1rem;
     box-sizing: border-box;
-    scrollbar-width: none; /* Firefox */
+    margin: 0 auto;
 }
 
 .gallery-carousel::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
 }
 
 .memory-card-carousel {
-    flex: 0 0 85vw; /* Show one main image with a peek of the next */
-    max-width: 500px;
-    height: 60vh;
-    scroll-snap-align: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Square aspect ratio for grid items */
     background: #fff;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    opacity: 1; /* Make visible by default since carousel logic is removed */
+    transform: none;
 }
 
 .memory-img {
