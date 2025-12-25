@@ -86,14 +86,15 @@ section.visible {
     color: var(--text-color);
 }
 
-/* Grid Gallery */
+/* Vertical Stack Gallery */
 .gallery-carousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem; /* Spacing between photos */
     width: 100%;
-    max-width: 1200px;
-    padding: 1rem;
+    max-width: 800px; /* Constrain width for better view on desktop */
+    padding: 2rem 1rem;
     box-sizing: border-box;
     margin: 0 auto;
 }
@@ -104,22 +105,25 @@ section.visible {
 
 .memory-card-carousel {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1; /* Square aspect ratio for grid items */
-    background: #fff;
+    height: auto; /* Allow natural height */
+    background: transparent;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    opacity: 1; /* Make visible by default since carousel logic is removed */
-    transform: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    opacity: 0; /* Initial state for animation */
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.memory-card-carousel.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .memory-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+    height: auto;
     display: block;
+    border-radius: 10px;
 }
 
 /* Closing Message */
@@ -247,24 +251,9 @@ section.visible {
     .message-text { font-size: 1.4rem; }
     .buttons { flex-direction: column; height: auto; gap: 1rem; }
 
-    /* Vertical Feed for Mobile */
-    .gallery-carousel {
-        flex-direction: column;
-        overflow-x: hidden; /* No horizontal scroll */
-        scroll-snap-type: none;
-        padding: 0;
-        gap: 2rem;
-    }
-
-    .memory-card-carousel {
-        flex: 0 0 auto;
-        width: 100%; /* Use full width minus padding handled by section maybe? Check global padding */
-        max-width: 90%; /* Center it nicely */
-        margin: 0 auto;
-        height: auto; /* Let height adapt to image aspect ratio or set a fixed max-height */
-        min-height: 300px; /* Prevent collapse while loading */
-        max-height: 70vh;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Lighter shadow for mobile */
+    /* Mobile adjustments if needed, but main layout is now vertical */
+    section {
+        padding: 2rem 0.5rem;
     }
 
     section {
