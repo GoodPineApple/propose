@@ -1,88 +1,53 @@
-// Ensure DOM is fully loaded before running
-function init() {
-  // Scroll Animation Observer
-  const sections = document.querySelectorAll("section");
-  const observerOptions = {
-    threshold: 0.1,
-  };
+document.addEventListener("DOMContentLoaded", () => {
+    // "No" Button Interaction
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, observerOptions);
+    if (noBtn) {
+        // For Desktop (Mouseover)
+        noBtn.addEventListener("mouseover", moveButton);
+        
+        // For Mobile (Touchstart)
+        noBtn.addEventListener("touchstart", (e) => {
+            e.preventDefault(); 
+            moveButton();
+        });
 
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
+        noBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+    }
 
-  // Observe Images for Scroll Animation
-  const images = document.querySelectorAll(".memory-card-carousel");
-  images.forEach((img) => {
-    observer.observe(img);
-  });
+    function moveButton() {
+        // Calculate new position within the viewport
+        const x = (Math.random() - 0.5) * 300;
+        const y = (Math.random() - 0.5) * 300;
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
-  // "No" Button Interaction
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
+    // "Yes" Button Interaction
+    const celebration = document.getElementById("celebration");
 
-  // For Desktop (Mouseover)
-  noBtn.addEventListener("mouseover", moveButton);
+    if (yesBtn) {
+        yesBtn.addEventListener("click", () => {
+            // Trigger Confetti
+            fireConfetti();
+            // Show Overlay
+            if (celebration) celebration.classList.add("active");
+            // Continuous confetti
+            setInterval(fireConfetti, 2000);
+        });
+    }
 
-  // For Mobile (Touchstart - make it jump properly)
-  noBtn.addEventListener("touchstart", (e) => {
-    // We don't preventDefault immediately if we want to allow some interaction, 
-    // but for the "run away" effect, preventing default is good to stop the click.
-    e.preventDefault(); 
-    moveButton();
-  });
-
-  noBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    moveButton();
-  });
-
-  function moveButton() {
-    const container = document.querySelector(".buttons");
-    const containerRect = container.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
-
-    // Calculate new position within the viewport safely, but let's just make it jump around loosely
-    // Simple approach: random translate
-    const x = (Math.random() - 0.5) * 300;
-    const y = (Math.random() - 0.5) * 300;
-
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-  }
-
-  // "Yes" Button Interaction
-  const celebration = document.getElementById("celebration");
-
-  yesBtn.addEventListener("click", () => {
-    // Trigger Confetti
-    fireConfetti();
-
-    // Show Overlay
-    celebration.classList.add("active");
-
-    // Continuous confetti
-    setInterval(fireConfetti, 2000);
-  });
-
-  function fireConfetti() {
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#eebbcc", "#d4af37", "#ffffff"],
-    });
-  }
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+    function fireConfetti() {
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ["#eebbcc", "#d4af37", "#ffffff"],
+            });
+        }
+    }
+});
